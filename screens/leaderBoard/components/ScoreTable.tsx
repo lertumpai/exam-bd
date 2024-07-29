@@ -38,7 +38,6 @@ function ScoreTable() {
   function ScoreHeader() {
     return (
       <View style={styles.tableHeader}>
-        <Text style={styles.headerText}>ID</Text>
         <Text style={styles.headerText}>Name</Text>
         <Text style={styles.headerText}>Score</Text>
         <Text style={styles.headerText}>Within(secs)</Text>
@@ -53,7 +52,6 @@ function ScoreTable() {
   function ScoreRow(row: ScoreRowProps) {
     return (
       <View style={styles.tableRow}>
-        <Text style={styles.rowText}>{row.id}</Text>
         <Text style={styles.rowText}>{row.name}</Text>
         <Text style={styles.rowText}>{row.score}</Text>
         <Text style={styles.rowText}>{calculateTime(row.startDateTime, row.finishDateTime)}</Text>
@@ -66,9 +64,7 @@ function ScoreTable() {
       <View style={styles.table}>
         <ScoreHeader/>
         {tableData.map((row) => (
-          <View key={row.id} style={styles.tableRow}>
-            <ScoreRow {...row}/>
-          </View>
+          <ScoreRow {...row}/>
         ))}
       </View>
     </ScrollView>
@@ -82,6 +78,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   table: {
+    width: '100%',
     borderWidth: 1,
     borderColor: colors.black,
   },
@@ -92,9 +89,10 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.black,
   },
   headerText: {
+    flex: 1,
     padding: 10,
     fontWeight: 'bold',
-    textAlign: 'center',
+    textAlign: 'left',
   },
   tableRow: {
     flexDirection: 'row',
@@ -102,8 +100,9 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.grey["50"],
   },
   rowText: {
+    flex: 1,
     padding: 10,
-    textAlign: 'center',
+    textAlign: 'left',
   },
 })
 
