@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     width: '100%',
+    height: '100%',
     marginBottom: 10,
   },
   submitText: {
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
 type ExamScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Exam'>;
 
 export default function ExamScreen({navigation}: ExamScreenNavigationProp) {
-  const exams = useMemo(() => generateMathExam(1), []);
+  const exams = useMemo(() => generateMathExam(5), []);
   const [finish, setFinish] = useState(false);
   const [selectedMap, setSelectedMap] = useState(new Map<number, number>());
   const [scoreModalVisible, setScoreModalVisible] = useState(false);
