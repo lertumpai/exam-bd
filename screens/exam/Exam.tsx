@@ -11,8 +11,7 @@ import CustomModal from "../../components/Modal";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'flex-start',
+    backgroundColor: colors.grey["50"],
     justifyContent: 'flex-start',
     padding: 10,
   },
@@ -88,11 +87,6 @@ export default function ExamScreen({navigation}: ExamScreenNavigationProp) {
       {finish &&
           <Text
               style={styles.finishText}>{'You have already finished the examination. Please start a new test.'}</Text>}
-      <CustomModal
-        text={textScore()}
-        modalVisible={scoreModalVisible}
-        onClosed={() => setScoreModalVisible(false)}
-      />
       <ScrollView style={styles.scrollView}>
         {exams.map((exam) => (
           <QuestionAndAnswer
@@ -105,14 +99,19 @@ export default function ExamScreen({navigation}: ExamScreenNavigationProp) {
             disabled={finish}
           />
         ))}
-        <Button
-          onPress={onSubmit}
-          title={'Submit'}
-          textStyle={finish ? styles.submitFinishText : styles.submitText}
-          buttonStyle={finish ? styles.submitFinishButton : styles.submitButton}
-          disabled={finish}
-        />
       </ScrollView>
+      <Button
+        onPress={onSubmit}
+        title={'Submit'}
+        textStyle={finish ? styles.submitFinishText : styles.submitText}
+        buttonStyle={finish ? styles.submitFinishButton : styles.submitButton}
+        disabled={finish}
+      />
+      <CustomModal
+        text={textScore()}
+        modalVisible={scoreModalVisible}
+        onClosed={() => setScoreModalVisible(false)}
+      />
     </View>
   );
 }
