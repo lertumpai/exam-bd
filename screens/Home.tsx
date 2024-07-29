@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
   button: {
     borderStyle: 'solid',
-    borderColor: colors.black.primary,
+    borderColor: colors.black,
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -33,7 +33,7 @@ export default function HomeScreen({navigation}: HomeScreenNavigationProp) {
         title="Exam"
         textStyle={
           {
-            color: colors.black.primary,
+            color: colors.black,
             fontSize: 18
           }}
         buttonStyle={styles.button}
@@ -45,7 +45,7 @@ export default function HomeScreen({navigation}: HomeScreenNavigationProp) {
         title="Leader Board"
         textStyle={
           {
-            color: colors.black.primary,
+            color: colors.black,
             fontSize: 18
           }}
         buttonStyle={styles.button}

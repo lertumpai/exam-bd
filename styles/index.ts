@@ -1,14 +1,15 @@
 export const colors = {
-  lightBlue: {
-    primary: '#29B6F6',
-    secondary: '#81D4FA'
+  "grey": {
+    "50": "#FAFAFA",
+    "100": "#F5F5F5",
+    "200": "#EEEEEE",
+    "300": "#E0E0E0",
+    "400": "#BDBDBD",
+    "500": "#9E9E9E",
+    "600": "#757575",
+    "700": "#616161",
+    "800": "#424242",
+    "900": "#212121"
   },
-  lightGreen: {
-    primary: '#66BB6A',
-    secondary: '#81C784'
-  },
-  black: {
-    primary: '#000000',
-    secondary: '#212121'
-  }
+  black: "#000000"
 }
