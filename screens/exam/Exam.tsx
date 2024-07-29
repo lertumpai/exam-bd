@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   submitFinishButton: {
     borderWidth: 1,
-    color: colors.grey["200"],
+    borderColor: colors.grey["200"],
     width: '100%',
     alignItems: 'center',
     paddingVertical: 5
