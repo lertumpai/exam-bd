@@ -1,6 +1,7 @@
 import React from 'react'
 import {ScrollView, StyleSheet, Text, View} from 'react-native'
 import {colors} from "../../../styles";
+import {calculateTime} from "../../../utils/date";
 
 export type ScoreRowProps = {
   name: string
@@ -22,10 +23,6 @@ function ScoreTable(props: ScoreTableProps) {
         <Text style={styles.headerText}>Within(secs)</Text>
       </View>
     )
-  }
-
-  const calculateTime = (startDateTime: Date, finishDateTime: Date): string => {
-    return String((finishDateTime.getTime() - startDateTime.getTime()) / 1000)
   }
 
   function ScoreRow(row: ScoreRowProps) {
