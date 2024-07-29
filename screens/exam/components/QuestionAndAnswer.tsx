@@ -8,10 +8,34 @@ type Props = {
   question: string,
   choices: string[],
   selected?: number,
-  disabled?: boolean
+  finished?: boolean
+  answerIndex: number
 }
 
 function QuestionAndAnswer(props: Props) {
+  function textStyle(index: number) {
+    // not submit yet
+    if (!props.finished) {
+      return props.selected === index ? styles.choose : styles.choice
+    }
+
+    // already submit and correct
+    if (props.selected === index && props.answerIndex === index) {
+      return styles.choose
+    }
+
+    if (props.selected === index) {
+      return styles.choose
+    }
+
+    // right answer that is not selected
+    if (props.answerIndex === index) {
+      return styles.answer
+    }
+
+    return styles.choice
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.question}>{props.questionNumber}. {props.question}</Text>
@@ -21,9 +45,9 @@ function QuestionAndAnswer(props: Props) {
           onPress={() => props.onPress(props.questionNumber, index)}
           activeOpacity={0.5}
           style={styles.touchable}
-          disabled={props.disabled}
+          disabled={props.finished}
         >
-          <Text style={props.selected === index ? styles.choose : styles.choice}>
+          <Text style={textStyle(index)}>
             {index + 1}. {choice}
           </Text>
         </TouchableOpacity>
@@ -61,6 +85,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.grey["100"],
     backgroundColor: colors.grey["500"],
+    marginVertical: 4,
+    width: '100%',
+  },
+  answer: {
+    fontSize: 16,
+    color: colors.grey["100"],
+    backgroundColor: colors.red["300"],
     marginVertical: 4,
     width: '100%',
   }

@@ -55,7 +55,7 @@ type ExamScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Exam
 
 export default function ExamScreen({navigation}: ExamScreenNavigationProp) {
   const exams = useMemo(() => generateMathExam(5), []);
-  const [finish, setFinish] = useState(false);
+  const [finished, setFinished] = useState(false);
   const [selectedMap, setSelectedMap] = useState(new Map<number, number>());
   const [scoreModalVisible, setScoreModalVisible] = useState(false);
 
@@ -79,13 +79,13 @@ export default function ExamScreen({navigation}: ExamScreenNavigationProp) {
     if (exams.length !== selectedMap.size) {
       return
     }
-    setFinish(true)
+    setFinished(true)
     setScoreModalVisible(true)
   }
 
   return (
     <View style={styles.container}>
-      {finish &&
+      {finished &&
           <Text
               style={styles.finishText}>{'You have already finished the examination. Please start a new test.'}</Text>}
       <ScrollView style={styles.scrollView}>
@@ -97,16 +97,17 @@ export default function ExamScreen({navigation}: ExamScreenNavigationProp) {
             choices={exam.choices}
             selected={selectedMap.get(exam.id)}
             onPress={onSelected}
-            disabled={finish}
+            finished={finished}
+            answerIndex={exam.answerIndex}
           />
         ))}
       </ScrollView>
       <Button
         onPress={onSubmit}
         title={'Submit'}
-        textStyle={finish ? styles.submitFinishText : styles.submitText}
-        buttonStyle={finish ? styles.submitFinishButton : styles.submitButton}
-        disabled={finish}
+        textStyle={finished ? styles.submitFinishText : styles.submitText}
+        buttonStyle={finished ? styles.submitFinishButton : styles.submitButton}
+        disabled={finished}
       />
       <CustomModal
         text={textScore()}
