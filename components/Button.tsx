@@ -7,12 +7,13 @@ type Props = {
   title: string;
   buttonStyle?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
+  disabled?: boolean;
 }
 
 export default function Button(props: Props) {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={props.buttonStyle} onPress={props.onPress}>
+      <TouchableOpacity style={props.buttonStyle} onPress={props.onPress} disabled={props.disabled}>
         <Text style={props.textStyle}>{props.title}</Text>
       </TouchableOpacity>
     </View>

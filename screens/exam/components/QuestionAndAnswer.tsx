@@ -8,6 +8,7 @@ type Props = {
   question: string,
   choices: string[],
   selected?: number,
+  disabled?: boolean
 }
 
 function QuestionAndAnswer(props: Props) {
@@ -19,7 +20,9 @@ function QuestionAndAnswer(props: Props) {
           key={index}
           onPress={() => props.onPress(props.questionNumber, index)}
           activeOpacity={0.5}
-          style={styles.touchable}>
+          style={styles.touchable}
+          disabled={props.disabled}
+        >
           <Text style={props.selected === index ? styles.choose : styles.choice}>
             {index + 1}. {choice}
           </Text>

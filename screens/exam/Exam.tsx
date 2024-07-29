@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet, View} from "react-native";
+import {ScrollView, StyleSheet, Text, View} from "react-native";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../root.navigation";
 import QuestionAndAnswer from "./components/QuestionAndAnswer";
@@ -30,6 +30,24 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     paddingVertical: 5
+  },
+  submitFinishText: {
+    fontSize: 18,
+    color: colors.grey["200"]
+  },
+  submitFinishButton: {
+    borderWidth: 1,
+    color: colors.grey["200"],
+    width: '100%',
+    alignItems: 'center',
+    paddingVertical: 5
+  },
+  finishText: {
+    fontSize: 18,
+    color: colors.black,
+    backgroundColor: colors.grey["300"],
+    width: '100%',
+    padding: 5
   }
 });
 
@@ -37,6 +55,7 @@ type ExamScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Exam
 
 export default function ExamScreen({navigation}: ExamScreenNavigationProp) {
   const exams = useMemo(() => generateMathExam(1), []);
+  const [finish, setFinish] = useState(false);
   const [selectedMap, setSelectedMap] = useState(new Map<number, number>());
   const [scoreModalVisible, setScoreModalVisible] = useState(false);
 
@@ -57,11 +76,18 @@ export default function ExamScreen({navigation}: ExamScreenNavigationProp) {
   const textScore = (): string => `Your score is ${calculateScore()}/${exams.length}`
 
   const onSubmit = () => {
+    if (exams.length !== selectedMap.size) {
+      return
+    }
+    setFinish(true)
     setScoreModalVisible(true)
   }
 
   return (
     <View style={styles.container}>
+      {finish &&
+          <Text
+              style={styles.finishText}>{'You have already finished the examination. Please start a new test.'}</Text>}
       <CustomModal
         text={textScore()}
         modalVisible={scoreModalVisible}
@@ -76,13 +102,15 @@ export default function ExamScreen({navigation}: ExamScreenNavigationProp) {
             choices={exam.choices}
             selected={selectedMap.get(exam.id)}
             onPress={onSelected}
+            disabled={finish}
           />
         ))}
         <Button
           onPress={onSubmit}
           title={'Submit'}
-          textStyle={styles.submitText}
-          buttonStyle={styles.submitButton}
+          textStyle={finish ? styles.submitFinishText : styles.submitText}
+          buttonStyle={finish ? styles.submitFinishButton : styles.submitButton}
+          disabled={finish}
         />
       </ScrollView>
     </View>
