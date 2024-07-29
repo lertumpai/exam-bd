@@ -61,8 +61,9 @@ const styles = StyleSheet.create({
 type ExamScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Exam'>
 
 export default function ExamScreen({route}: ExamScreenNavigationProp) {
+  const startDateTime = useMemo(() => new Date(), [])
+  const [finishedTime, setFinishedTime] = useState<Date>(null)
   const exams = useMemo(() => generateMathExam(5), [])
-  const [finished, setFinished] = useState(false)
   const [alert, setAlert] = useState(false)
   const [selectedMap, setSelectedMap] = useState(new Map<number, number>())
   const [scoreModalVisible, setScoreModalVisible] = useState(false)
@@ -81,20 +82,22 @@ export default function ExamScreen({route}: ExamScreenNavigationProp) {
       , 0)
   }
 
-  const textScore = (): string => `${route.params.name} score is ${calculateScore()}/${exams.length}`
+  const calculateTimeInSeconds = (): number => finishedTime ? Math.floor((finishedTime.getTime() - startDateTime.getTime()) / 1000) : 0
+
+  const textScore = (): string => `${route.params.name} score is ${calculateScore()}/${exams.length} within ${calculateTimeInSeconds()} seconds`
 
   const onSubmit = () => {
     if (exams.length !== selectedMap.size) {
       setAlert(true)
       return setTimeout(() => setAlert(false), 3000)
     }
-    setFinished(true)
+    setFinishedTime(new Date())
     setScoreModalVisible(true)
   }
 
   return (
     <View style={styles.container}>
-      {finished &&
+      {!!finishedTime &&
           <Text
               style={styles.finishText}>{'You have already finished the examination. Please start a new test.'}</Text>}
       {alert &&
@@ -109,7 +112,7 @@ export default function ExamScreen({route}: ExamScreenNavigationProp) {
             choices={exam.choices}
             selected={selectedMap.get(exam.id)}
             onPress={onSelected}
-            finished={finished}
+            finished={!!finishedTime}
             answerIndex={exam.answerIndex}
           />
         ))}
@@ -117,9 +120,9 @@ export default function ExamScreen({route}: ExamScreenNavigationProp) {
       <Button
         onPress={onSubmit}
         title={'Submit'}
-        textStyle={finished ? styles.submitFinishText : styles.submitText}
-        buttonStyle={finished ? styles.submitFinishButton : styles.submitButton}
-        disabled={finished}
+        textStyle={!!finishedTime ? styles.submitFinishText : styles.submitText}
+        buttonStyle={!!finishedTime ? styles.submitFinishButton : styles.submitButton}
+        disabled={!!finishedTime}
       />
       <CustomModal
         text={textScore()}
