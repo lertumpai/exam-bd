@@ -2,228 +2,18 @@ import React from 'react'
 import {ScrollView, StyleSheet, Text, View} from 'react-native'
 import {colors} from "../../../styles";
 
-type ScoreRowProps = {
-  id: number
+export type ScoreRowProps = {
   name: string
   score: number
   startDateTime: Date
   finishDateTime: Date
 }
 
-function ScoreTable() {
-  const tableData = [
-    {
-      id: 1,
-      name: 'John Doe',
-      score: 97,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:07Z')
-    },
-    {
-      id: 2,
-      name: 'ABC',
-      score: 8,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:11Z')
-    },
-    {
-      id: 3,
-      name: 'eiei zaza',
-      score: 18,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:17Z')
-    },
-    {
-      id: 1,
-      name: 'John Doe',
-      score: 97,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:07Z')
-    },
-    {
-      id: 2,
-      name: 'ABC',
-      score: 8,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:11Z')
-    },
-    {
-      id: 3,
-      name: 'eiei zaza',
-      score: 18,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:17Z')
-    },
-    {
-      id: 1,
-      name: 'John Doe',
-      score: 97,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:07Z')
-    },
-    {
-      id: 2,
-      name: 'ABC',
-      score: 8,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:11Z')
-    },
-    {
-      id: 3,
-      name: 'eiei zaza',
-      score: 18,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:17Z')
-    },
-    {
-      id: 1,
-      name: 'John Doe',
-      score: 97,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:07Z')
-    },
-    {
-      id: 2,
-      name: 'ABC',
-      score: 8,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:11Z')
-    },
-    {
-      id: 3,
-      name: 'eiei zaza',
-      score: 18,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:17Z')
-    },
-    {
-      id: 1,
-      name: 'John Doe',
-      score: 97,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:07Z')
-    },
-    {
-      id: 2,
-      name: 'ABC',
-      score: 8,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:11Z')
-    },
-    {
-      id: 3,
-      name: 'eiei zaza',
-      score: 18,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:17Z')
-    },
-    {
-      id: 1,
-      name: 'John Doe',
-      score: 97,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:07Z')
-    },
-    {
-      id: 2,
-      name: 'ABC',
-      score: 8,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:11Z')
-    },
-    {
-      id: 3,
-      name: 'eiei zaza',
-      score: 18,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:17Z')
-    },
-    {
-      id: 1,
-      name: 'John Doe',
-      score: 97,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:07Z')
-    },
-    {
-      id: 2,
-      name: 'ABC',
-      score: 8,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:11Z')
-    },
-    {
-      id: 3,
-      name: 'eiei zaza',
-      score: 18,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:17Z')
-    },
-    {
-      id: 1,
-      name: 'John Doe',
-      score: 97,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:07Z')
-    },
-    {
-      id: 2,
-      name: 'ABC',
-      score: 8,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:11Z')
-    },
-    {
-      id: 3,
-      name: 'eiei zaza',
-      score: 18,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:17Z')
-    },
-    {
-      id: 1,
-      name: 'John Doe',
-      score: 97,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:07Z')
-    },
-    {
-      id: 2,
-      name: 'ABC',
-      score: 8,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:11Z')
-    },
-    {
-      id: 3,
-      name: 'eiei zaza',
-      score: 18,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:17Z')
-    },
-    {
-      id: 1,
-      name: 'John Doe',
-      score: 97,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:07Z')
-    },
-    {
-      id: 2,
-      name: 'ABC',
-      score: 8,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:11Z')
-    },
-    {
-      id: 3,
-      name: 'eiei zaza',
-      score: 18,
-      startDateTime: new Date('2021-01-01T00:00:00Z'),
-      finishDateTime: new Date('2021-01-01T00:00:17Z')
-    },
-  ]
+type ScoreTableProps = {
+  rows: ScoreRowProps[]
+}
 
+function ScoreTable(props: ScoreTableProps) {
   function ScoreHeader() {
     return (
       <View style={styles.tableHeader}>
@@ -253,8 +43,8 @@ function ScoreTable() {
       <ScoreHeader/>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.table}>
-          {tableData.map((row) => (
-            <ScoreRow key={row.id} {...row}/>
+          {props.rows.map((row, index) => (
+            <ScoreRow key={index} {...row}/>
           ))}
         </View>
       </ScrollView>

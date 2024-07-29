@@ -7,6 +7,7 @@ import {useCallback, useMemo, useState} from "react"
 import Button from "../../components/Button"
 import {colors} from "../../styles"
 import CustomModal from "../../components/Modal"
+import {getScoresCollection} from "../../database/db";
 
 const styles = StyleSheet.create({
   container: {
@@ -91,8 +92,18 @@ export default function ExamScreen({route}: ExamScreenNavigationProp) {
       setAlert(true)
       return setTimeout(() => setAlert(false), 3000)
     }
-    setFinishedTime(new Date())
+    const finishedTime = new Date()
+    setFinishedTime(finishedTime)
     setScoreModalVisible(true)
+
+    // save data
+    const scores = getScoresCollection()
+    scores.insert({
+      name: route.params.name,
+      score: calculateScore(),
+      startDateTime,
+      finishDateTime: finishedTime,
+    })
   }
 
   return (
