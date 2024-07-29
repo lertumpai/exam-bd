@@ -32,7 +32,196 @@ function ScoreTable() {
       score: 18,
       startDateTime: new Date('2021-01-01T00:00:00Z'),
       finishDateTime: new Date('2021-01-01T00:00:17Z')
-    }
+    },
+    {
+      id: 1,
+      name: 'John Doe',
+      score: 97,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:07Z')
+    },
+    {
+      id: 2,
+      name: 'ABC',
+      score: 8,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:11Z')
+    },
+    {
+      id: 3,
+      name: 'eiei zaza',
+      score: 18,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:17Z')
+    },
+    {
+      id: 1,
+      name: 'John Doe',
+      score: 97,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:07Z')
+    },
+    {
+      id: 2,
+      name: 'ABC',
+      score: 8,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:11Z')
+    },
+    {
+      id: 3,
+      name: 'eiei zaza',
+      score: 18,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:17Z')
+    },
+    {
+      id: 1,
+      name: 'John Doe',
+      score: 97,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:07Z')
+    },
+    {
+      id: 2,
+      name: 'ABC',
+      score: 8,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:11Z')
+    },
+    {
+      id: 3,
+      name: 'eiei zaza',
+      score: 18,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:17Z')
+    },
+    {
+      id: 1,
+      name: 'John Doe',
+      score: 97,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:07Z')
+    },
+    {
+      id: 2,
+      name: 'ABC',
+      score: 8,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:11Z')
+    },
+    {
+      id: 3,
+      name: 'eiei zaza',
+      score: 18,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:17Z')
+    },
+    {
+      id: 1,
+      name: 'John Doe',
+      score: 97,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:07Z')
+    },
+    {
+      id: 2,
+      name: 'ABC',
+      score: 8,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:11Z')
+    },
+    {
+      id: 3,
+      name: 'eiei zaza',
+      score: 18,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:17Z')
+    },
+    {
+      id: 1,
+      name: 'John Doe',
+      score: 97,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:07Z')
+    },
+    {
+      id: 2,
+      name: 'ABC',
+      score: 8,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:11Z')
+    },
+    {
+      id: 3,
+      name: 'eiei zaza',
+      score: 18,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:17Z')
+    },
+    {
+      id: 1,
+      name: 'John Doe',
+      score: 97,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:07Z')
+    },
+    {
+      id: 2,
+      name: 'ABC',
+      score: 8,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:11Z')
+    },
+    {
+      id: 3,
+      name: 'eiei zaza',
+      score: 18,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:17Z')
+    },
+    {
+      id: 1,
+      name: 'John Doe',
+      score: 97,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:07Z')
+    },
+    {
+      id: 2,
+      name: 'ABC',
+      score: 8,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:11Z')
+    },
+    {
+      id: 3,
+      name: 'eiei zaza',
+      score: 18,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:17Z')
+    },
+    {
+      id: 1,
+      name: 'John Doe',
+      score: 97,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:07Z')
+    },
+    {
+      id: 2,
+      name: 'ABC',
+      score: 8,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:11Z')
+    },
+    {
+      id: 3,
+      name: 'eiei zaza',
+      score: 18,
+      startDateTime: new Date('2021-01-01T00:00:00Z'),
+      finishDateTime: new Date('2021-01-01T00:00:17Z')
+    },
   ]
 
   function ScoreHeader() {
@@ -60,14 +249,16 @@ function ScoreTable() {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <View style={styles.table}>
-        <ScoreHeader/>
-        {tableData.map((row) => (
-          <ScoreRow {...row}/>
-        ))}
-      </View>
-    </ScrollView>
+    <View style={styles.container}>
+      <ScoreHeader/>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.table}>
+          {tableData.map((row) => (
+            <ScoreRow key={row.id} {...row}/>
+          ))}
+        </View>
+      </ScrollView>
+    </View>
   )
 }
 
@@ -75,16 +266,18 @@ export default React.memo(ScoreTable)
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     padding: 10,
+  },
+  scrollContainer: {
+    flexGrow: 1,
   },
   table: {
     width: '100%',
-    borderWidth: 1,
-    borderColor: colors.black,
   },
   tableHeader: {
     flexDirection: 'row',
-    backgroundColor: colors.grey["50"],
+    backgroundColor: colors.grey["200"],
     borderBottomWidth: 1,
     borderBottomColor: colors.black,
   },
@@ -97,7 +290,7 @@ const styles = StyleSheet.create({
   tableRow: {
     flexDirection: 'row',
     borderBottomWidth: 1,
-    borderBottomColor: colors.grey["50"],
+    borderBottomColor: colors.grey["300"],
   },
   rowText: {
     flex: 1,
