@@ -48,14 +48,22 @@ const styles = StyleSheet.create({
     backgroundColor: colors.grey["300"],
     width: '100%',
     padding: 5
+  },
+  alertText: {
+    fontSize: 18,
+    color: colors.grey["50"],
+    backgroundColor: colors.red["500"],
+    width: '100%',
+    padding: 5
   }
 });
 
 type ExamScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Exam'>;
 
-export default function ExamScreen({navigation}: ExamScreenNavigationProp) {
+export default function ExamScreen({route}: ExamScreenNavigationProp) {
   const exams = useMemo(() => generateMathExam(5), []);
   const [finished, setFinished] = useState(false);
+  const [alert, setAlert] = useState(false);
   const [selectedMap, setSelectedMap] = useState(new Map<number, number>());
   const [scoreModalVisible, setScoreModalVisible] = useState(false);
 
@@ -73,11 +81,12 @@ export default function ExamScreen({navigation}: ExamScreenNavigationProp) {
       , 0)
   }
 
-  const textScore = (): string => `Your score is ${calculateScore()}/${exams.length}`
+  const textScore = (): string => `${route.params.name} score is ${calculateScore()}/${exams.length}`
 
   const onSubmit = () => {
     if (exams.length !== selectedMap.size) {
-      return
+      setAlert(true)
+      return setTimeout(() => setAlert(false), 3000)
     }
     setFinished(true)
     setScoreModalVisible(true)
@@ -88,6 +97,9 @@ export default function ExamScreen({navigation}: ExamScreenNavigationProp) {
       {finished &&
           <Text
               style={styles.finishText}>{'You have already finished the examination. Please start a new test.'}</Text>}
+      {alert &&
+          <Text
+              style={styles.alertText}>{'Please do every question'}</Text>}
       <ScrollView style={styles.scrollView}>
         {exams.map((exam) => (
           <QuestionAndAnswer

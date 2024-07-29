@@ -38,7 +38,7 @@ export default function HomeScreen({navigation}: HomeScreenNavigationProp) {
           }}
         buttonStyle={styles.button}
         onPress={() =>
-          navigation.navigate('Exam')
+          navigation.navigate('RegisterExam')
         }
       />
       <Button
