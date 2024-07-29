@@ -4,6 +4,8 @@ import {RootStackParamList} from "../../root.navigation";
 import QuestionAndAnswer from "./components/QuestionAndAnswer";
 import {generateMathExam} from "./utils/generateExam";
 import {useCallback, useMemo, useState} from "react";
+import Button from "../../components/Button";
+import {colors} from "../../styles";
 
 const styles = StyleSheet.create({
   container: {
@@ -17,11 +19,22 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: 10
   },
+  submitText: {
+    fontSize: 18,
+    color: colors.black
+  },
+  submitButton: {
+    borderWidth: 1,
+    borderColor: colors.black,
+    width: '100%',
+    alignItems: 'center',
+    paddingVertical: 5
+  }
 });
 
 type ExamScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Exam'>;
 
-export default function ExamScreen(props: ExamScreenNavigationProp) {
+export default function ExamScreen({navigation}: ExamScreenNavigationProp) {
   const exams = useMemo(() => generateMathExam(20), []);
   const [selectedMap, setSelectedMap] = useState(new Map<number, number>());
 
@@ -32,6 +45,17 @@ export default function ExamScreen(props: ExamScreenNavigationProp) {
       return newSelectedMap;
     });
   }, []);
+
+  const calculateScore = (): number => {
+    return exams.reduce((score, exam) =>
+        exam.answerIndex === selectedMap.get(exam.id) ? score + 1 : score
+      , 0)
+  }
+
+  const onSubmit = () => {
+    navigation.pop()
+    navigation.navigate('Score', {score: calculateScore(), totalQuestion: exams.length});
+  }
 
   return (
     <View style={styles.container}>
@@ -46,6 +70,12 @@ export default function ExamScreen(props: ExamScreenNavigationProp) {
             onPress={onSelected}
           />
         ))}
+        <Button
+          onPress={onSubmit}
+          title={'Submit'}
+          textStyle={styles.submitText}
+          buttonStyle={styles.submitButton}
+        />
       </ScrollView>
     </View>
   );

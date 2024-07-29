@@ -4,6 +4,7 @@ import HomeScreen from "./screens/Home";
 import LeaderBoardScreen from "./screens/LeaderBoard";
 import {RootStackParamList} from "./root.navigation";
 import ExamScreen from "./screens/exam/Exam";
+import ScoreScreen from "./screens/Score";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -14,6 +15,7 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen}/>
         <Stack.Screen name="Exam" component={ExamScreen}/>
         <Stack.Screen name="LeaderBoard" component={LeaderBoardScreen}/>
+        <Stack.Screen name="Score" component={ScoreScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
