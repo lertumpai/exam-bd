@@ -1,10 +1,9 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {GestureResponderEvent} from "react-native/Libraries/Types/CoreEventTypes";
 import {colors} from "../../../styles";
 
 type Props = {
-  onPress: (event: GestureResponderEvent) => void;
+  onPress: (questionNumber: number, selected: number) => void;
   questionNumber: number,
   question: string,
   choices: string[],
@@ -12,11 +11,20 @@ type Props = {
 }
 
 export default function QuestionAndAnswer(props: Props) {
+
+  const onPress = useCallback((selected: number) => {
+    props.onPress(props.questionNumber, selected);
+  }, [])
+
   return (
     <View style={styles.container}>
       <Text style={styles.question}>{props.questionNumber}. {props.question}</Text>
       {props.choices.map((choice, index) => (
-        <TouchableOpacity key={index} onPress={props.onPress} activeOpacity={1} style={styles.touchable}>
+        <TouchableOpacity
+          key={index}
+          onPress={() => onPress(index)}
+          activeOpacity={0.5}
+          style={styles.touchable}>
           <Text style={props.selected === index ? styles.choose : styles.choice}>
             {index + 1}. {choice}
           </Text>

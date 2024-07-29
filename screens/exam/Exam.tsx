@@ -3,6 +3,7 @@ import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../root.navigation";
 import QuestionAndAnswer from "./components/QuestionAndAnswer";
 import {generateMathExam} from "./utils/generateExam";
+import {useCallback, useMemo, useState} from "react";
 
 const styles = StyleSheet.create({
   container: {
@@ -21,7 +22,16 @@ const styles = StyleSheet.create({
 type ExamScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Exam'>;
 
 export default function ExamScreen(props: ExamScreenNavigationProp) {
-  const exams = generateMathExam(20)
+  const exams = useMemo(() => generateMathExam(20), []);
+  const [selectedMap, setSelectedMap] = useState(new Map<number, number>());
+
+  const onSelected = useCallback((questionNumber: number, selected: number) => {
+    setSelectedMap(prevSelectedMap => {
+      const newSelectedMap = new Map(prevSelectedMap);
+      newSelectedMap.set(questionNumber, selected);
+      return newSelectedMap;
+    });
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -32,9 +42,8 @@ export default function ExamScreen(props: ExamScreenNavigationProp) {
             questionNumber={exam.id}
             question={exam.question}
             choices={exam.choices}
-            selected={exam.answerIndex}
-            onPress={() => {
-            }}
+            selected={selectedMap.get(exam.id)}
+            onPress={onSelected}
           />
         ))}
       </ScrollView>
