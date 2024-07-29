@@ -1,12 +1,12 @@
-import {ScrollView, StyleSheet, Text, View} from "react-native";
-import {NativeStackScreenProps} from "@react-navigation/native-stack";
-import {RootStackParamList} from "../../root.navigation";
-import QuestionAndAnswer from "./components/QuestionAndAnswer";
-import {generateMathExam} from "./utils/generateExam";
-import {useCallback, useMemo, useState} from "react";
-import Button from "../../components/Button";
-import {colors} from "../../styles";
-import CustomModal from "../../components/Modal";
+import {ScrollView, StyleSheet, Text, View} from "react-native"
+import {NativeStackScreenProps} from "@react-navigation/native-stack"
+import {RootStackParamList} from "../../root.navigation"
+import QuestionAndAnswer from "./components/QuestionAndAnswer"
+import {generateMathExam} from "./utils/generateExam"
+import {useCallback, useMemo, useState} from "react"
+import Button from "../../components/Button"
+import {colors} from "../../styles"
+import CustomModal from "../../components/Modal"
 
 const styles = StyleSheet.create({
   container: {
@@ -56,24 +56,24 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 5
   }
-});
+})
 
-type ExamScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Exam'>;
+type ExamScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Exam'>
 
 export default function ExamScreen({route}: ExamScreenNavigationProp) {
-  const exams = useMemo(() => generateMathExam(5), []);
-  const [finished, setFinished] = useState(false);
-  const [alert, setAlert] = useState(false);
-  const [selectedMap, setSelectedMap] = useState(new Map<number, number>());
-  const [scoreModalVisible, setScoreModalVisible] = useState(false);
+  const exams = useMemo(() => generateMathExam(5), [])
+  const [finished, setFinished] = useState(false)
+  const [alert, setAlert] = useState(false)
+  const [selectedMap, setSelectedMap] = useState(new Map<number, number>())
+  const [scoreModalVisible, setScoreModalVisible] = useState(false)
 
   const onSelected = useCallback((questionNumber: number, selected: number) => {
     setSelectedMap(prevSelectedMap => {
-      const newSelectedMap = new Map(prevSelectedMap);
-      newSelectedMap.set(questionNumber, selected);
-      return newSelectedMap;
-    });
-  }, []);
+      const newSelectedMap = new Map(prevSelectedMap)
+      newSelectedMap.set(questionNumber, selected)
+      return newSelectedMap
+    })
+  }, [])
 
   const calculateScore = (): number => {
     return exams.reduce((score, exam) =>
@@ -127,5 +127,5 @@ export default function ExamScreen({route}: ExamScreenNavigationProp) {
         onClosed={() => setScoreModalVisible(false)}
       />
     </View>
-  );
+  )
 }

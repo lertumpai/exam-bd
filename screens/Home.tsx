@@ -1,8 +1,8 @@
-import {StyleSheet, View} from "react-native";
-import {NativeStackScreenProps} from "@react-navigation/native-stack";
-import {RootStackParamList} from "../root.navigation";
-import Button from "../components/Button";
-import {colors} from "../styles";
+import {StyleSheet, View} from "react-native"
+import {NativeStackScreenProps} from "@react-navigation/native-stack"
+import {RootStackParamList} from "../root.navigation"
+import Button from "../components/Button"
+import {colors} from "../styles"
 
 const styles = StyleSheet.create({
   container: {
@@ -21,10 +21,10 @@ const styles = StyleSheet.create({
     height: 30,
     margin: 5
   },
-});
+})
 
 
-type HomeScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Home'>;
+type HomeScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Home'>
 
 export default function HomeScreen({navigation}: HomeScreenNavigationProp) {
   return (
@@ -54,5 +54,5 @@ export default function HomeScreen({navigation}: HomeScreenNavigationProp) {
         }
       />
     </View>
-  );
+  )
 }

@@ -1,9 +1,9 @@
-import {StyleSheet, TextInput, View} from "react-native";
-import {NativeStackScreenProps} from "@react-navigation/native-stack";
-import {RootStackParamList} from "../../root.navigation";
-import {useState} from "react";
-import Button from "../../components/Button";
-import {colors} from "../../styles";
+import {StyleSheet, TextInput, View} from "react-native"
+import {NativeStackScreenProps} from "@react-navigation/native-stack"
+import {RootStackParamList} from "../../root.navigation"
+import {useState} from "react"
+import Button from "../../components/Button"
+import {colors} from "../../styles"
 
 const styles = StyleSheet.create({
   container: {
@@ -36,21 +36,21 @@ const styles = StyleSheet.create({
     padding: 5,
     fontSize: 18,
   },
-});
+})
 
 
-type RegisterExamScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'RegisterExam'>;
+type RegisterExamScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'RegisterExam'>
 
 export default function RegisterExamScreen({navigation}: RegisterExamScreenNavigationProp) {
-  const [name, setName] = useState<string>('');
-  const [isInputError, setIsInputError] = useState<boolean>(false);
+  const [name, setName] = useState<string>('')
+  const [isInputError, setIsInputError] = useState<boolean>(false)
 
   function onRegister() {
     if (!name) {
-      return setIsInputError(true);
+      return setIsInputError(true)
     }
     navigation.pop()
-    navigation.navigate('Exam', {name});
+    navigation.navigate('Exam', {name})
   }
 
   return (
@@ -64,5 +64,5 @@ export default function RegisterExamScreen({navigation}: RegisterExamScreenNavig
       />
       <Button onPress={onRegister} title={'register'} buttonStyle={styles.button} textStyle={styles.text}/>
     </View>
-  );
+  )
 }

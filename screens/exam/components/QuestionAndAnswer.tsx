@@ -1,9 +1,9 @@
-import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {colors} from "../../../styles";
+import React from 'react'
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
+import {colors} from "../../../styles"
 
 type Props = {
-  onPress: (questionNumber: number, selected: number) => void;
+  onPress: (questionNumber: number, selected: number) => void
   questionNumber: number,
   question: string,
   choices: string[],
@@ -53,10 +53,10 @@ function QuestionAndAnswer(props: Props) {
         </TouchableOpacity>
       ))}
     </View>
-  );
-};
+  )
+}
 
-export default React.memo(QuestionAndAnswer);
+export default React.memo(QuestionAndAnswer)
 
 const styles = StyleSheet.create({
   container: {
@@ -95,5 +95,5 @@ const styles = StyleSheet.create({
     marginVertical: 4,
     width: '100%',
   }
-});
+})
 

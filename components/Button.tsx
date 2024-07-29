@@ -1,13 +1,13 @@
-import React from 'react';
-import {StyleProp, StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle} from 'react-native';
-import {GestureResponderEvent} from "react-native/Libraries/Types/CoreEventTypes";
+import React from 'react'
+import {StyleProp, StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle} from 'react-native'
+import {GestureResponderEvent} from "react-native/Libraries/Types/CoreEventTypes"
 
 type Props = {
-  onPress: (event: GestureResponderEvent) => void;
-  title: string;
-  buttonStyle?: StyleProp<ViewStyle>;
-  textStyle?: StyleProp<TextStyle>;
-  disabled?: boolean;
+  onPress: (event: GestureResponderEvent) => void
+  title: string
+  buttonStyle?: StyleProp<ViewStyle>
+  textStyle?: StyleProp<TextStyle>
+  disabled?: boolean
 }
 
 export default function Button(props: Props) {
@@ -17,13 +17,13 @@ export default function Button(props: Props) {
         <Text style={props.textStyle}>{props.title}</Text>
       </TouchableOpacity>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
   },
-});
+})
 

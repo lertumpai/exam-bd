@@ -1,11 +1,11 @@
-import React from 'react';
-import {Modal, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {colors} from "../styles";
+import React from 'react'
+import {Modal, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
+import {colors} from "../styles"
 
 type Props = {
-  text: string;
-  modalVisible: boolean;
-  onClosed: () => void;
+  text: string
+  modalVisible: boolean
+  onClosed: () => void
 }
 
 export default function CustomModal({text, modalVisible, onClosed}: Props) {
@@ -30,8 +30,8 @@ export default function CustomModal({text, modalVisible, onClosed}: Props) {
         </View>
       </Modal>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -76,5 +76,5 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: colors.black
   },
-});
+})
 
