@@ -2,6 +2,7 @@ import {StyleSheet, View} from "react-native";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../root.navigation";
 import Button from "../components/Button";
+import {colors} from "../styles";
 
 const styles = StyleSheet.create({
   container: {
@@ -10,19 +11,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  examButton: {
+  button: {
     borderStyle: 'solid',
-    borderColor: 'red',
-    borderWidth: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 150,
-    height: 30,
-    margin: 5
-  },
-  leaderBoardButton: {
-    borderStyle: 'solid',
-    borderColor: 'red',
+    borderColor: colors.black.primary,
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -42,10 +33,10 @@ export default function HomeScreen({navigation}: HomeScreenNavigationProp) {
         title="Exam"
         textStyle={
           {
-            color: 'red',
+            color: colors.black.primary,
             fontSize: 18
           }}
-        buttonStyle={styles.examButton}
+        buttonStyle={styles.button}
         onPress={() =>
           navigation.navigate('Exam')
         }
@@ -54,10 +45,10 @@ export default function HomeScreen({navigation}: HomeScreenNavigationProp) {
         title="Leader Board"
         textStyle={
           {
-            color: 'red',
+            color: colors.black.primary,
             fontSize: 18
           }}
-        buttonStyle={styles.leaderBoardButton}
+        buttonStyle={styles.button}
         onPress={() =>
           navigation.navigate('LeaderBoard')
         }
