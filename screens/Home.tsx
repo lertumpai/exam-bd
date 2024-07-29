@@ -1,4 +1,6 @@
 import {StyleSheet, Text, View} from "react-native";
+import {NativeStackScreenProps} from "@react-navigation/native-stack";
+import {RootStackParamList} from "../root.navigation";
 
 const styles = StyleSheet.create({
   container: {
@@ -9,7 +11,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function HomeScreen({navigation}) {
+
+type HomeScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Home'>;
+
+export default function HomeScreen({navigation}: HomeScreenNavigationProp) {
   return (
     <View style={styles.container}>
       <Text>Home</Text>

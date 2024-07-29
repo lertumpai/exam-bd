@@ -3,8 +3,9 @@ import {NavigationContainer} from "@react-navigation/native";
 import HomeScreen from "./screens/Home";
 import ExamScreen from "./screens/Exam";
 import LeaderBoardScreen from "./screens/LeaderBoard";
+import {RootStackParamList} from "./root.navigation";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
