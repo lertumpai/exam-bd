@@ -6,6 +6,7 @@ import {generateMathExam} from "./utils/generateExam";
 import {useCallback, useMemo, useState} from "react";
 import Button from "../../components/Button";
 import {colors} from "../../styles";
+import CustomModal from "../../components/Modal";
 
 const styles = StyleSheet.create({
   container: {
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     width: '100%',
-    marginBottom: 10
+    marginBottom: 10,
   },
   submitText: {
     fontSize: 18,
@@ -35,8 +36,9 @@ const styles = StyleSheet.create({
 type ExamScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Exam'>;
 
 export default function ExamScreen({navigation}: ExamScreenNavigationProp) {
-  const exams = useMemo(() => generateMathExam(20), []);
+  const exams = useMemo(() => generateMathExam(1), []);
   const [selectedMap, setSelectedMap] = useState(new Map<number, number>());
+  const [scoreModalVisible, setScoreModalVisible] = useState(false);
 
   const onSelected = useCallback((questionNumber: number, selected: number) => {
     setSelectedMap(prevSelectedMap => {
@@ -52,13 +54,19 @@ export default function ExamScreen({navigation}: ExamScreenNavigationProp) {
       , 0)
   }
 
+  const textScore = (): string => `Your score is ${calculateScore()}/${exams.length}`
+
   const onSubmit = () => {
-    navigation.pop()
-    navigation.navigate('Score', {score: calculateScore(), totalQuestion: exams.length});
+    setScoreModalVisible(true)
   }
 
   return (
     <View style={styles.container}>
+      <CustomModal
+        text={textScore()}
+        modalVisible={scoreModalVisible}
+        onClosed={() => setScoreModalVisible(false)}
+      />
       <ScrollView style={styles.scrollView}>
         {exams.map((exam) => (
           <QuestionAndAnswer
