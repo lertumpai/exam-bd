@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {colors} from "../../../styles";
 
@@ -10,19 +10,14 @@ type Props = {
   selected?: number,
 }
 
-export default function QuestionAndAnswer(props: Props) {
-
-  const onPress = useCallback((selected: number) => {
-    props.onPress(props.questionNumber, selected);
-  }, [])
-
+function QuestionAndAnswer(props: Props) {
   return (
     <View style={styles.container}>
       <Text style={styles.question}>{props.questionNumber}. {props.question}</Text>
       {props.choices.map((choice, index) => (
         <TouchableOpacity
           key={index}
-          onPress={() => onPress(index)}
+          onPress={() => props.onPress(props.questionNumber, index)}
           activeOpacity={0.5}
           style={styles.touchable}>
           <Text style={props.selected === index ? styles.choose : styles.choice}>
@@ -33,6 +28,8 @@ export default function QuestionAndAnswer(props: Props) {
     </View>
   );
 };
+
+export default React.memo(QuestionAndAnswer);
 
 const styles = StyleSheet.create({
   container: {
