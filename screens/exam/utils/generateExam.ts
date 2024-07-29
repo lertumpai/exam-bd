@@ -47,12 +47,9 @@ function generateQuestion(id: number): ExamType {
 export function generateMathExam(n: number): ExamType[] {
   const exams: ExamType[] = []
 
-  for (let i = 1 i <= n
-  i++
-)
-  {
-    exams.push(generateQuestion(i))
+  for (let i = 1; i <= n; i++) {
+    exams.push(generateQuestion(i));
   }
-
+  
   return exams
 }
