@@ -14,12 +14,13 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     width: '100%',
+    marginBottom: 10
   },
 });
 
 type ExamScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Exam'>;
 
-export default function ExamScreen() {
+export default function ExamScreen(props: ExamScreenNavigationProp) {
   const exams = generateMathExam(20)
 
   return (
@@ -31,6 +32,7 @@ export default function ExamScreen() {
             questionNumber={exam.id}
             question={exam.question}
             choices={exam.choices}
+            selected={exam.answerIndex}
             onPress={() => {
             }}
           />

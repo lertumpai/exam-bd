@@ -16,8 +16,8 @@ export default function QuestionAndAnswer(props: Props) {
     <View style={styles.container}>
       <Text style={styles.question}>{props.questionNumber}. {props.question}</Text>
       {props.choices.map((choice, index) => (
-        <TouchableOpacity key={index} onPress={props.onPress} activeOpacity={1}>
-          <Text style={0 === index ? styles.choose : styles.choice}>
+        <TouchableOpacity key={index} onPress={props.onPress} activeOpacity={1} style={styles.touchable}>
+          <Text style={props.selected === index ? styles.choose : styles.choice}>
             {index + 1}. {choice}
           </Text>
         </TouchableOpacity>
@@ -35,6 +35,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: '100%',
     padding: 8,
+  },
+  touchable: {
+    width: '100%',
   },
   question: {
     fontSize: 18,
