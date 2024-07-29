@@ -1,6 +1,7 @@
-import {StyleSheet, Text, View} from "react-native"
+import {StyleSheet, View} from "react-native"
 import {NativeStackScreenProps} from "@react-navigation/native-stack"
-import {RootStackParamList} from "../root.navigation"
+import {RootStackParamList} from "../../root.navigation";
+import ScoreTable from "./components/ScoreTable";
 
 const styles = StyleSheet.create({
   container: {
@@ -17,7 +18,7 @@ type LeaderBoardScreenNavigationProp = NativeStackScreenProps<RootStackParamList
 export default function LeaderBoardScreen({navigation}: LeaderBoardScreenNavigationProp) {
   return (
     <View style={styles.container}>
-      <Text>Leader</Text>
+      <ScoreTable/>
     </View>
   )
 }
