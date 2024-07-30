@@ -42,7 +42,6 @@ const adapter = {
 export const db = new Loki(dbFilePath, {
   autosave: true,
   autoload: true,
-  persistenceMethod: 'fs',
   adapter
 })
 

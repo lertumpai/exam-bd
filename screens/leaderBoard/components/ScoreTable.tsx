@@ -18,6 +18,7 @@ function ScoreTable(props: ScoreTableProps) {
   function ScoreHeader() {
     return (
       <View style={styles.tableHeader}>
+        <Text style={styles.headerText}>Rank</Text>
         <Text style={styles.headerText}>Name</Text>
         <Text style={styles.headerText}>Score</Text>
         <Text style={styles.headerText}>Within(secs)</Text>
@@ -25,9 +26,10 @@ function ScoreTable(props: ScoreTableProps) {
     )
   }
 
-  function ScoreRow(row: ScoreRowProps) {
+  function ScoreRow(rank: number, row: ScoreRowProps) {
     return (
-      <View style={styles.tableRow}>
+      <View key={rank} style={styles.tableRow}>
+        <Text style={styles.rowText}>{rank}</Text>
         <Text style={styles.rowText}>{row.name}</Text>
         <Text style={styles.rowText}>{row.score}</Text>
         <Text style={styles.rowText}>{calculateTime(row.startDateTime, row.finishDateTime)}</Text>
@@ -40,9 +42,7 @@ function ScoreTable(props: ScoreTableProps) {
       <ScoreHeader/>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.table}>
-          {props.rows.map((row, index) => (
-            <ScoreRow key={index} {...row}/>
-          ))}
+          {props.rows.map((row, index) => ScoreRow(index + 1, row))}
         </View>
       </ScrollView>
     </View>
