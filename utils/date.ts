@@ -1,3 +1,3 @@
-export const calculateTime = (startDateTime: Date, finishDateTime: Date) => {
-  return (finishDateTime.getTime() - startDateTime.getTime()) / 1000
+export const calculateTime = (startDateTime: Date | string, finishDateTime: Date | string) => {
+  return (new Date(finishDateTime).getTime() - new Date(startDateTime).getTime()) / 1000
 }

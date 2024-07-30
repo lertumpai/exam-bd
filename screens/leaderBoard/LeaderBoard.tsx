@@ -29,6 +29,7 @@ export default function LeaderBoardScreen(props: LeaderBoardScreenNavigationProp
 
   useEffect(() => {
     const scoresCollection = getScoresCollection();
+    console.log("scoresCollection", scoresCollection.find())
     setScores(scoresCollection.find().sort(sortByScoresAndTime));
   }, []);
 

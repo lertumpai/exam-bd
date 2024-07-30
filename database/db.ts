@@ -1,9 +1,50 @@
 // database.ts
 import Loki from 'lokijs'
+import RNFS from 'react-native-fs';
 
-export const db = new Loki('examination-database.db', {
+const dbFilePath = `${RNFS.DocumentDirectoryPath}/examination-database.db`;
+
+const adapter = {
+  loadDatabase: function (dbname, callback) {
+    RNFS.readFile(dbFilePath, 'utf8')
+      .then(data => {
+        callback(data);
+      })
+      .catch(err => {
+        if (err.code === 'ENOENT') {
+          // File does not exist, initialize new DB
+          callback(null);
+        } else {
+          throw err;
+        }
+      });
+  },
+  saveDatabase: function (dbname, dbstring, callback) {
+    RNFS.writeFile(dbFilePath, dbstring, 'utf8')
+      .then(() => {
+        callback();
+      })
+      .catch(err => {
+        throw err;
+      });
+  },
+  deleteDatabase: function (dbname, callback) {
+    RNFS.unlink(dbFilePath)
+      .then(() => {
+        callback();
+      })
+      .catch(err => {
+        throw err;
+      });
+  }
+};
+
+export const db = new Loki(dbFilePath, {
   autosave: true,
+  autosaveInterval: 2000,
   autoload: true,
+  persistenceMethod: 'fs',
+  adapter
 })
 
 export type ScoreSchema = {
