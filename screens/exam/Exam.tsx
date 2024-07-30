@@ -64,7 +64,7 @@ type ExamScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Exam
 export default function ExamScreen({route}: ExamScreenNavigationProp) {
   const startDateTime = useMemo(() => new Date(), [])
   const [finishedTime, setFinishedTime] = useState<Date>(null)
-  const exams = useMemo(() => generateMathExam(5), [])
+  const exams = useMemo(() => generateMathExam(20), [])
   const [alert, setAlert] = useState(false)
   const [selectedMap, setSelectedMap] = useState(new Map<number, number>())
   const [scoreModalVisible, setScoreModalVisible] = useState(false)
