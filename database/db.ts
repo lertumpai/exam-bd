@@ -1,7 +1,10 @@
 // database.ts
 import Loki from 'lokijs'
 
-export const db = new Loki('examination-database')
+export const db = new Loki('examination-database.db', {
+  autosave: true,
+  autoload: true,
+})
 
 export type ScoreSchema = {
   name: string
